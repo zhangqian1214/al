@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.0.1",
+    "bootstrap": "^4.4.1",
     "core-js": "^3.4.3",
     "echarts": "^4.6.0",
     "tinymce": "^5.1.5",
@@ -29,6 +30,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "postcss-pxtorem": "^4.0.1",
     "vue-template-compiler": "^2.6.10"
   }
 }
