@@ -22,6 +22,11 @@ export default new Router({
       component: resolve => require(['../richText/index'], resolve)
     },
     {
+      path: '/scroll',
+      name: 'scroll',
+      component: resolve => require(['../scroll/index'], resolve)
+    },
+    {
       path: '/aboutPag',
       name: 'aboutPag',
       component: resolve => require(['../aboutPag/index.vue'], resolve),

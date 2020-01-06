@@ -13,9 +13,7 @@ import "./js/world.js";
 
 export default {
   name: "chart1",
-  components: {},title:{
-        text: '图表标题',
-      },
+  components: {},
   data() {
     return {};
   },

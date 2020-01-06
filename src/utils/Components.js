@@ -9,6 +9,8 @@ import richText2 from '@/richText2/index'
 import echarts from '@/chart/index'
 import chart1 from '@/chart/chart1/index'
 import chart2 from '@/chart/chart2/index'
+import scroll from '@/scroll/index'
+import rotationChart from '@/rotationChart/index'
 
 export default { // 1.暴露(导出)一个对象{}
   install (Vue) { // 2.在对象中选项install
@@ -20,5 +22,7 @@ export default { // 1.暴露(导出)一个对象{}
     Vue.component(richText2.name, richText2)//富文本2
     Vue.component(chart1.name, chart1)
     Vue.component(chart2.name, chart2)
+    Vue.component(scroll.name, scroll)
+    Vue.component(rotationChart.name, rotationChart)
   }
 }

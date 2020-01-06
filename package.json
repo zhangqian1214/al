@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.0.1",
+    "amfe-flexible": "^2.2.1",
     "bootstrap": "^4.4.1",
     "core-js": "^3.4.3",
     "echarts": "^4.6.0",
