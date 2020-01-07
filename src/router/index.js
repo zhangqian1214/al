@@ -27,6 +27,25 @@ export default new Router({
       component: resolve => require(['../scroll/index'], resolve)
     },
     {
+      path: '/rotationChart',
+      name: 'rotationChart',
+      component: resolve => require(['../rotationChart/index'], resolve),
+      children:[
+        {
+          path: '/rotationChart/rotationChart1',
+          name: 'rotationChart1',
+          component: resolve => require(['../rotationChart/rotationChart1/index'], resolve),
+          meta: { title: '轮播图1' }
+        },
+        {
+          path: '/rotationChart/rotationChart2',
+          name: 'rotationChart2',
+          component: resolve => require(['../rotationChart/rotationChart2/index'], resolve),
+          meta: { title: '轮播图2' }
+        },
+      ]
+    },
+    {
       path: '/aboutPag',
       name: 'aboutPag',
       component: resolve => require(['../aboutPag/index.vue'], resolve),

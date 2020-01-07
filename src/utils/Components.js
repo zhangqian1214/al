@@ -6,11 +6,13 @@ import child2 from '@/child2/index'
 import child1 from '@/child1/index'
 import richText from '@/richText/index'
 import richText2 from '@/richText2/index'
-import echarts from '@/chart/index'
+// import echarts from '@/chart/index'
 import chart1 from '@/chart/chart1/index'
 import chart2 from '@/chart/chart2/index'
 import scroll from '@/scroll/index'
 import rotationChart from '@/rotationChart/index'
+import rotationChart1 from '@/rotationChart/rotationChart1/index'
+import rotationChart2 from '@/rotationChart/rotationChart2/index'
 
 export default { // 1.暴露(导出)一个对象{}
   install (Vue) { // 2.在对象中选项install
@@ -24,5 +26,7 @@ export default { // 1.暴露(导出)一个对象{}
     Vue.component(chart2.name, chart2)
     Vue.component(scroll.name, scroll)
     Vue.component(rotationChart.name, rotationChart)
+    Vue.component(rotationChart1.name, rotationChart1)
+    Vue.component(rotationChart2.name, rotationChart2)
   }
 }

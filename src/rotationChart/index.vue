@@ -1,7 +1,8 @@
 <template>
   <div>
-    轮播图
-    <div class="box"></div>
+    <router-link to="/rotationChart/rotationChart1">轮播图1</router-link> |
+    <router-link to="/rotationChart/rotationChart2">轮播图2</router-link>
+    <router-view/>
   </div>
 </template>
 
@@ -19,9 +20,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .box {
-    border: 1px solid #000;
-    width: 20px;
-    height: 20px;
-  }
+
 </style>
