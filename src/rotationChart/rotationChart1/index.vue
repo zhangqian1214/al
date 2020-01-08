@@ -2,13 +2,23 @@
   <div>
     手写轮播图
     <div ref="imgdom" class="bigBox">
-      <ul class="banner">
-        <li class="box" v-for="(item,index) in imgs" :key="index">
+      <ul class="banner" :style="'left:-'+ this.widt+'px'">
+        <li class="box" v-for="(item,index) in newimgs" :key="index">
           <a href="#">
-            <img :src="item" :alt="'轮播图'+index" />
+            <img :src="item.url" :alt="'轮播图'+index" />
           </a>
         </li>
       </ul>
+      <div @click="btnLeft" class="btn btn-left">&lt;</div>
+      <div @click="btnRight" class="btn btn-right">&gt;</div>
+      <div class="inde">
+        <i
+          @click="ite(item)"
+          :class="{ishow:item.index==inde}"
+          v-for="(item,index) in imgs"
+          :key="index"
+        ></i>
+      </div>
     </div>
   </div>
 </template>
@@ -18,33 +28,53 @@ export default {
   name: "rotationChart1",
   data() {
     return {
-      widt: "",
+      widt: "0",
+      newimgs: [],
       imgs: [
-        "/images/banner4.jpg",
-        "/images/banner1.jpg",
-        "/images/banner2.jpg",
-        "/images/banner3.jpg",
-        "/images/banner4.jpg",
-        "/images/banner1.jpg"
+        { index: 1, url: "/images/banner1.jpg" },
+        { index: 2, url: "/images/banner2.jpg" },
+        { index: 3, url: "/images/banner3.jpg" },
+        { index: 4, url: "/images/banner4.jpg" }
       ],
-      imgurl:
-        "https://github.com/zhangqian1214/xcx/blob/master/images/banner4.jpg?raw=true"
+      inde: "1"
     };
   },
-  computed: {
-    // widt () {
-    //   var _this = this
-    //   return {
-    //     _this.$refs.imgdom.offsetWidth
-    //   }
-    // }
+  computed: {},
+  created() {
+    this.imgsData();
   },
-  created() {},
   mounted() {
-    this.widt = this.$refs.imgdom.offsetWidth * this.imgs.length;
-    console.log(this.widt);
+    this.widt = this.$refs.imgdom.offsetWidth;
+    // this.widt = this.$refs.imgdom.offsetWidth * this.imgs.length;
+    // console.log(this.widt);
   },
-  methods: {}
+  methods: {
+    btnLeft() {
+      this.inde--;
+      this.widt = this.$refs.imgdom.offsetWidth * this.inde;
+      if (this.inde < 1) {
+        this.inde = 4;
+        this.widt = this.$refs.imgdom.offsetWidth * this.inde;
+      }
+    },
+    btnRight() {
+      this.inde++;
+      this.widt = this.$refs.imgdom.offsetWidth * this.inde;
+      if (this.inde > 4) {
+        this.inde = 1;
+        this.widt = this.$refs.imgdom.offsetWidth;
+      }
+    },
+    ite(item) {
+      this.inde = item.index;
+      this.widt = this.$refs.imgdom.offsetWidth * this.inde;
+    },
+    imgsData() {
+      this.newimgs = JSON.parse(JSON.stringify(this.imgs));
+      this.newimgs.unshift(this.imgs[this.imgs.length - 1]);
+      this.newimgs.push(this.imgs[0]);
+    }
+  }
 };
 </script>
 
@@ -54,31 +84,74 @@ ul li {
 }
 
 .bigBox {
-  width: 375px;
+  // width: 375px;
+  width: 100%;
   height: 233.22px;
   position: relative;
-  // overflow: hidden;
+  overflow: hidden;
   .banner {
-    width: 375px * 6;
+    width: 100% * 6;
     height: 233.22px;
     position: absolute;
+    // left: -375px;
     .box {
-      // width: 375px;
-      // height: 233.22px;
+      width: 375px;
+      height: 233.22px;
       float: left;
       a {
         img {
-          width: 375px;
-          height: 233.22px;
+          width: 100%;
         }
       }
     }
   }
 }
+/* 左右按钮 */
+.bigBox .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(41, 34, 34, 0.4);
+  text-align: center;
+  font: bold 20px/10px "宋体";
+  padding: 15px 10px;
+  // color: #fff;
+  display: none;
+}
+.bigBox .btn-right {
+  right: 0;
+}
+.bigBox:hover .btn {
+  display: block;
+}
+.inde {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 4%;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  i {
+    margin: 5px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #444;
+    border-radius: 50%;
+  }
+}
+.ishow {
+  margin: 5px;
+  width: 10px;
+  height: 10px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background-color: #666;
+}
 </style>
 <style>
 * {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   padding: 0;
 }
